@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Illustration: Geschenkbox mit Schleife und Macarons">
+<title>Illustration: Geschenkbox mit Schleife und Macarons</title>
+<defs>
+  <filter id="graing" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 .3  0 0 0 0 .2  0 0 0 0 .15  0 0 0 .09 0"/>
+  </filter>
+  <radialGradient id="glowg" cx="50%" cy="38%" r="60%">
+    <stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="shadeg" x1="0" x2="1">
+    <stop offset="0" stop-color="#000" stop-opacity=".07"/><stop offset=".35" stop-color="#000" stop-opacity="0"/>
+    <stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".1"/>
+  </linearGradient>
+</defs>
+<rect width="800" height="1000" fill="#F1E4D9"/>
+<rect width="800" height="1000" fill="url(#glowg)"/>
+<rect x="0" y="720" width="800" height="280" fill="#E4CDBE"/><ellipse cx="370" cy="800" rx="250" ry="24" fill="#4A332B" opacity="0.12"/><rect x="150" y="470" width="440" height="330" rx="16" fill="#FFFaf4"/><rect x="150" y="470" width="440" height="330" rx="16" fill="url(#shadeg)"/><rect x="130" y="420" width="480" height="80" rx="16" fill="#FFFDF9"/><rect x="345" y="420" width="50" height="380" fill="#DDA6A0"/><path d="M370,420 C300,330 230,360 260,410 C280,440 340,430 370,420Z" fill="#C17C76"/><path d="M370,420 C440,330 510,360 480,410 C460,440 400,430 370,420Z" fill="#C17C76"/><path d="M370,420 L330,520 L350,510 L362,532Z M370,420 L410,520 L390,510 L378,532Z" fill="#DDA6A0"/><circle cx="370" cy="420" r="22" fill="#DDA6A0"/><rect x="420" y="600" width="140" height="80" rx="8" fill="#F2DAD2" transform="rotate(-6 490 640)"/><path d="M455,640 C440,620 460,606 470,622 C480,606 500,620 485,640 L470,654Z" fill="#C17C76" transform="rotate(-6 490 640)"/><ellipse cx="660" cy="797.4" rx="55.00000000000001" ry="8.8" fill="#4A332B" opacity="0.1"/><ellipse cx="660" cy="775.4" rx="55.00000000000001" ry="22.0" fill="#DDA6A0"/><rect x="609.4" y="755.6" width="101.2" height="15.400000000000002" rx="6.6000000000000005" fill="#FFFaf4"/><ellipse cx="660" cy="749.0" rx="55.00000000000001" ry="24.200000000000003" fill="#DDA6A0"/><ellipse cx="646.8" cy="740.2" rx="22.0" ry="7.700000000000001" fill="#fff" opacity=".35"/><ellipse cx="620" cy="897.4" rx="55.00000000000001" ry="8.8" fill="#4A332B" opacity="0.1"/><ellipse cx="620" cy="875.4" rx="55.00000000000001" ry="22.0" fill="#C9D3B8"/><rect x="569.4" y="855.6" width="101.2" height="15.400000000000002" rx="6.6000000000000005" fill="#FFFaf4"/><ellipse cx="620" cy="849.0" rx="55.00000000000001" ry="24.200000000000003" fill="#C9D3B8"/><ellipse cx="606.8" cy="840.2" rx="22.0" ry="7.700000000000001" fill="#fff" opacity=".35"/><ellipse cx="110" cy="914" rx="50" ry="8" fill="#4A332B" opacity="0.1"/><ellipse cx="110" cy="894" rx="50" ry="20" fill="#F1DFB2"/><rect x="64" y="876" width="92" height="14" rx="6" fill="#FFFaf4"/><ellipse cx="110" cy="870" rx="50" ry="22" fill="#F1DFB2"/><ellipse cx="98" cy="862" rx="20" ry="7" fill="#fff" opacity=".35"/><ellipse cx="700" cy="692.3" rx="47.5" ry="7.6" fill="#4A332B" opacity="0.1"/><ellipse cx="700" cy="673.3" rx="47.5" ry="19.0" fill="#F2DAD2"/><rect x="656.3" y="656.2" width="87.39999999999999" height="13.299999999999999" rx="5.699999999999999" fill="#FFFaf4"/><ellipse cx="700" cy="650.5" rx="47.5" ry="20.9" fill="#F2DAD2"/><ellipse cx="688.6" cy="642.9" rx="19.0" ry="6.6499999999999995" fill="#fff" opacity=".35"/>
+<rect width="800" height="1000" filter="url(#graing)"/>
+</svg>
