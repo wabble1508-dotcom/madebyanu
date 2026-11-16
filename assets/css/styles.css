@@ -119,6 +119,7 @@ h1, h2, h3, h4 { margin: 0; color: var(--cocoa); font-family: var(--display); fo
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: min(calc(100svh - 110px), 820px); border-bottom: 1px solid var(--line); }
 .hero-text { display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem); text-align: center; align-items: center; }
 .hero h1 { font-size: clamp(2.1rem, .9rem + 2.7vw, 3.7rem); max-width: 100%; overflow-wrap: break-word; text-transform: uppercase; letter-spacing: .05em; line-height: 1.08; }
+.hero h1 .kicker { display: block; font-family: var(--sans); font-size: .74rem; letter-spacing: .28em; line-height: 1.6; margin-bottom: 1.4rem; }
 .hero h1 .amp { font-style: italic; text-transform: none; color: var(--gold-text); font-weight: 400; }
 .hero .tagline { font-size: .8rem; letter-spacing: .32em; text-transform: uppercase; color: var(--cocoa); margin: 0; }
 .hero-lead { max-width: 30rem; margin: 1.6rem auto 2rem; color: var(--cocoa-2); }

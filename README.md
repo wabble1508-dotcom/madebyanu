@@ -33,3 +33,16 @@ assets/reels/         Reels von Instagram (MP4, ohne Ton) + Standbilder
    einer Fachperson prüfen lassen – die Vorlagen ersetzen keine Rechtsberatung.
 
 Farben ändern: in `styles.css` unter `:root` (`--rose`, `--rose-deep`, `--cream` …).
+
+## SEO, Vorschaubild & KI-Suche
+- **Vorschaubild beim Teilen:** `assets/img/og-image.jpg` (1200×630). Vorlage: `tools/og-image.html`, neu erzeugen mit `node tools/render-og.js`.
+- **Strukturierte Daten (Google & KI):** Bäckerei, Menü mit Preisen und FAQ werden aus `index.html` erzeugt.
+  Nach Änderungen an Sorten, Preisen oder FAQ einmal ausführen: `python3 tools/build-seo.py`
+- **Für Suchmaschinen & KI:** `robots.txt`, `sitemap.xml`, `llms.txt`.
+- **Eigene Domain (madebyanu.de):** Sobald sie verbunden ist, die Adresse `https://wabble1508-dotcom.github.io/madebyanu/`
+  in `index.html`, `tools/build-seo.py`, `robots.txt`, `sitemap.xml` und `llms.txt` ersetzen und `build-seo.py` ausführen.
+  Erst mit eigener Domain liest Google die `robots.txt` (bei github.io-Unterordnern wird sie ignoriert).
+- **Wichtigste Schritte außerhalb der Website:**
+  1. Google Unternehmensprofil (business.google.com) anlegen – Kategorie „Konditorei“/„Dessertgeschäft“, Dortmund, Website-Link, Fotos.
+  2. Google Search Console: Website hinzufügen und `sitemap.xml` einreichen.
+  3. In der Instagram-Bio den Website-Link eintragen.

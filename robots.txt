@@ -1,0 +1,17 @@
+# Alle Suchmaschinen und KI-Assistenten dürfen die Seite lesen.
+User-agent: *
+Allow: /
+
+# KI-Suchen ausdrücklich erlaubt (ChatGPT, Claude, Perplexity, Google-KI)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://wabble1508-dotcom.github.io/madebyanu/sitemap.xml
