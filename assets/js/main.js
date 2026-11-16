@@ -102,7 +102,7 @@
     document.body.classList.toggle("has-order", count > 0);
     if (!count) { listWrap.hidden = true; summaryBtn.setAttribute("aria-expanded", "false"); }
     document.getElementById("order-count").textContent = `${count} ${count === 1 ? "Artikel" : "Artikel"}`;
-    document.getElementById("order-total").textContent = total ? `· ${unpriced ? "ab " : ""}${euro(total)}` : "";
+    document.getElementById("order-total").textContent = total ? `${unpriced ? "ab " : ""}${euro(total)}` : "";
     const lines = [...order].map(([n, o]) => `• ${o.qty}× ${n}${o.cat && !n.includes(o.cat) ? ` (${o.cat})` : ""}${o.price ? ` – ${euro(o.price * o.qty)}` : ""}`);
     const text = ["Hallo Anu, ich möchte gern bestellen 🤎", "", ...lines, "", total ? `Summe (soweit bekannt): ${euro(total)}` : "", "Wann wäre eine Übergabe in Dortmund möglich?"].filter((l, i, a) => l !== "" || a[i - 1] !== "").join("\n");
     document.getElementById("order-send").href = WA(text);
