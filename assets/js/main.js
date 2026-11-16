@@ -9,9 +9,13 @@
      PHP-Skript). Bleibt sie leer, wird die Anfrage nach dem Absenden
      fertig formuliert per WhatsApp oder E-Mail an dich übergeben.
      ------------------------------------------------------------------ */
-  const FORM_ENDPOINT = "";
+  // Formular-Mails über FormSubmit (formsubmit.co) – kein Server nötig.
+  // Beim allerersten Absenden schickt FormSubmit eine Bestätigungs-Mail an die Adresse; einmal anklicken, fertig.
+  // Tipp: Nach der Aktivierung nennt FormSubmit einen zufälligen Code – den hier statt der E-Mail eintragen,
+  // dann ist die Adresse nicht mehr im Quellcode sichtbar.
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/anushkamondjal6@gmail.com";
   const WHATSAPP_NUMBER = "4917661478638";       // 0176 61478638 im internationalen Format
-  const CONTACT_EMAIL = "hallo@madebyanu.de";     // PLATZHALTER – bitte anpassen
+  const CONTACT_EMAIL = "anushkamondjal6@gmail.com";
 
   /* ---------- Header beim Scrollen ---------- */
   const header = document.querySelector(".site-header");
@@ -238,12 +242,12 @@
     if (sent) {
       title.textContent = "Danke, ";
       document.getElementById("success-text").textContent =
-        "Deine Anfrage ist bei mir angekommen. Ich freue mich riesig und melde mich innerhalb von 48 Stunden persönlich bei dir.";
+        "Deine Anfrage ist bei mir angekommen. Ich melde mich so schnell wie möglich persönlich bei dir – meistens per E-Mail oder WhatsApp.";
     } else {
       // Ohne Formular-Dienst: Anfrage wird vorbereitet und per WhatsApp/E-Mail übergeben
       title.textContent = "Fast geschafft, ";
       document.getElementById("success-text").textContent =
-        "Deine Anfrage ist fertig formuliert. Wähle nur noch aus, wie sie zu mir kommen soll – ich freue mich schon darauf!";
+        "Gerade hat das Senden nicht geklappt. Deine Anfrage ist aber fertig formuliert – schick sie mir einfach mit einem Tipp per WhatsApp oder E-Mail.";
       const text = buildMessage(data);
       const wa = document.createElement("a");
       wa.className = "btn btn--rose";
@@ -280,25 +284,42 @@
     }
 
     const data = Object.fromEntries(new FormData(form).entries());
+    if (data._honey) return; // Spam-Falle: nur Bots füllen dieses unsichtbare Feld aus
+    delete data._honey;
 
     if (!FORM_ENDPOINT) { showSuccess(data, false); return; }
 
     const btn = form.querySelector('button[type="submit"]');
+    const label = btn.textContent;
     btn.setAttribute("aria-busy", "true");
-    btn.firstChild.textContent = "Wird gesendet … ";
+    btn.textContent = "Wird gesendet …";
     try {
+      const payload = {
+        Name: data.name,
+        "E-Mail": data.email,
+        Wunschdatum: data.date ? formatDate(data.date) : "",
+        Anlass: data.occasion,
+        Anzahl: data.guests || "–",
+        Nachricht: data.message,
+        _replyto: data.email,
+        _subject: `Neue Anfrage über madebyanu.de: ${data.occasion} – ${data.name}`,
+        _template: "table",
+        _captcha: "false",
+      };
       const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, _subject: `Neue Anfrage: ${data.occasion}` }),
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(res.status);
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) === "false") throw new Error(out.message || res.status);
       showSuccess(data, true);
-    } catch {
+    } catch (err) {
+      console.warn("Formular konnte nicht gesendet werden:", err);
       showSuccess(data, false); // Fallback: WhatsApp / E-Mail
     } finally {
       btn.removeAttribute("aria-busy");
-      btn.firstChild.textContent = "Anfrage absenden ";
+      btn.textContent = label;
     }
   });
 })();

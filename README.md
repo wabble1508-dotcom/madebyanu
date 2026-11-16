@@ -10,7 +10,7 @@ impressum.html        Impressum (§ 5 DDG, Kleinunternehmer § 19 UStG)
 datenschutz.html      Datenschutzerklärung (DSGVO)
 assets/css/styles.css Design (Farben & Schriften oben als Variablen in :root)
 assets/js/main.js     Menü, Animationen, Formular
-assets/fonts/         Bodoni Moda, Figtree, Pinyon Script – lokal gehostet (DSGVO-konform, OFL-Lizenz)
+assets/fonts/         DM Serif Display, Figtree, Dancing Script – lokal gehostet (DSGVO-konform, OFL-Lizenz)
 assets/img/menu/      Menü-Grafiken & Fotos von Instagram
 assets/reels/         Reels von Instagram (MP4, ohne Ton) + Standbilder
 ```

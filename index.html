@@ -35,9 +35,9 @@
   <link rel="icon" href="assets/img/icon-48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/reels/dubai-schokolade-hd.jpg" as="image">
+  <link rel="preload" href="assets/video/creme.jpg" as="image">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.remove('no-js');</script>
 
@@ -458,27 +458,47 @@
 
   <!-- ============ Hero ============ -->
   <section class="hero" id="start" aria-labelledby="hero-title">
-    <div class="hero-text">
-      <h1 id="hero-title" class="reveal"><span class="kicker">Handgemacht in Dortmund</span>Cheesecake, Tiramisu <span class="amp">&amp;</span> Dubai Schokolade</h1>
-      <div class="ornament reveal" data-delay="1" aria-hidden="true"><span>✦</span></div>
-      <p class="tagline reveal" data-delay="2">Creamy. Dreamy. Irresistible.</p>
-      <p class="hero-lead reveal" data-delay="2">Cremige Cheesecake Cups ab 5,50 €, Tiramisu in neun Sorten und Dubai Schokolade mit echtem Pistazien-Crunch. Alles selbstgemacht und frisch auf Bestellung. Sorten auswählen, per WhatsApp schicken, in Dortmund abholen.</p>
-      <div class="hero-cta reveal" data-delay="3">
-        <a class="btn" href="#menue">Jetzt bestellen</a>
-        <a class="btn btn--line" href="https://wa.me/4917661478638?text=Hallo%20Anu%2C%20ich%20m%C3%B6chte%20gern%20bestellen." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Per WhatsApp</a>
+    <!-- Fließende Creme (Sahne, Himbeere, Karamell) als Hintergrund -->
+    <video class="hero-bg hv" autoplay muted loop playsinline preload="auto" poster="assets/video/creme.jpg" aria-hidden="true">
+      <source src="assets/video/creme-mobil.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)">
+      <source src="assets/video/creme.mp4" type="video/mp4">
+    </video>
+
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="hero-badge reveal">♡ Handgemacht in Dortmund</p>
+        <h1 id="hero-title" class="reveal" data-delay="1">Cheesecake, Tiramisu <em>&amp; Dubai Schokolade</em></h1>
+        <p class="hero-lead reveal" data-delay="2">Cremig geschichtet, mit flüssigem Pistazien-Crunch und echter Sahne. Alles selbstgemacht und frisch auf Bestellung. Sorten aussuchen, per WhatsApp schicken, in Dortmund abholen.</p>
+        <div class="hero-cta reveal" data-delay="3">
+          <a class="btn btn--big" href="#menue">Jetzt bestellen</a>
+          <a class="btn btn--line btn--big" href="https://wa.me/4917661478638?text=Hallo%20Anu%2C%20ich%20m%C3%B6chte%20gern%20bestellen." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Per WhatsApp</a>
+        </div>
+        <ul class="hero-proof reveal" data-delay="3">
+          <li><strong>ab 5,50 €</strong>Cheesecake Cups</li>
+          <li><strong>20 €</strong>4er Box nach Wahl</li>
+          <li><strong>100 %</strong>selbstgemacht</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" data-delay="2">
+        <figure class="reel-main">
+          <video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/dubai-schokolade-hd.jpg" aria-hidden="true"><source src="assets/reels/dubai-schokolade-hd.mp4" type="video/mp4"></video>
+          <figcaption>Dubai Schokolade</figcaption>
+        </figure>
+        <a class="float-card f1" href="#menue"><img src="assets/reels/tiramisu.jpg" alt="Classic Tiramisu im Glas" width="540" height="960"><span>Classic Tiramisu</span></a>
+        <a class="float-card f2" href="#menue"><img src="assets/reels/bueno-bomb.jpg" alt="Bueno Bomb Cheesecake im Becher" width="540" height="960"><span>Bueno Bomb · 5,50 €</span></a>
+        <a class="price-burst" href="#boxen"><small>4er Box</small><b>20 €</b><small>nach Wahl</small></a>
       </div>
     </div>
-    <figure class="hero-media" style="margin:0">
-      <video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/dubai-schokolade-hd.jpg" aria-hidden="true"><source src="assets/reels/dubai-schokolade-hd.mp4" type="video/mp4"></video>
-      <figcaption><span class="script">Classic Dubai</span>Pistazie · Kadayif · Creme</figcaption>
-      <button class="video-toggle" type="button" aria-pressed="false" aria-label="Video pausieren">
-        <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
-      </button>
-    </figure>
+
+    <button class="video-toggle" type="button" aria-pressed="false" aria-label="Videos pausieren">
+      <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
+    </button>
   </section>
 
   <!-- ============ Versprechen ============ -->
   <section class="promise" aria-label="Unser Versprechen">
+    <svg class="drip" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1440" height="18"/><rect x="10" y="0" width="32" height="85" rx="16"/><ellipse cx="92" cy="18" rx="58" ry="9"/><rect x="141" y="0" width="34" height="85" rx="17"/><ellipse cx="207" cy="18" rx="40" ry="7"/><rect x="239" y="0" width="34" height="70" rx="17"/><ellipse cx="304" cy="18" rx="40" ry="6"/><rect x="336" y="0" width="32" height="55" rx="16"/><ellipse cx="397" cy="18" rx="37" ry="6"/><rect x="426" y="0" width="19" height="48" rx="10"/><ellipse cx="490" cy="18" rx="53" ry="9"/><rect x="535" y="0" width="23" height="48" rx="12"/><ellipse cx="578" cy="18" rx="28" ry="10"/><rect x="599" y="0" width="20" height="30" rx="10"/><ellipse cx="641" cy="18" rx="30" ry="7"/><rect x="663" y="0" width="25" height="48" rx="12"/><ellipse cx="710" cy="18" rx="30" ry="9"/><rect x="731" y="0" width="28" height="70" rx="14"/><ellipse cx="792" cy="18" rx="40" ry="10"/><rect x="824" y="0" width="25" height="36" rx="12"/><ellipse cx="888" cy="18" rx="46" ry="9"/><rect x="926" y="0" width="18" height="36" rx="9"/><ellipse cx="969" cy="18" rx="33" ry="9"/><rect x="994" y="0" width="26" height="70" rx="13"/><ellipse cx="1075" cy="18" rx="63" ry="6"/><rect x="1130" y="0" width="26" height="55" rx="13"/><ellipse cx="1190" cy="18" rx="42" ry="10"/><rect x="1225" y="0" width="27" height="30" rx="14"/><ellipse cx="1276" cy="18" rx="32" ry="10"/><rect x="1300" y="0" width="21" height="70" rx="10"/><ellipse cx="1348" cy="18" rx="34" ry="8"/><rect x="1374" y="0" width="30" height="30" rx="15"/><ellipse cx="1425" cy="18" rx="29" ry="11"/></svg>
     <div class="wrap">
       <ul>
         <li><svg aria-hidden="true"><use href="#i-leaf"/></svg>Premium-Zutaten</li>
@@ -825,6 +845,7 @@
 
       <div class="form-card reveal" data-delay="1">
         <form id="request-form" novalidate>
+          <p class="hp" aria-hidden="true"><label>Bitte leer lassen <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></p>
           <div class="form-grid">
             <div class="field"><label for="f-name">Name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err"><span class="error" id="f-name-err" aria-live="polite"></span></div>
