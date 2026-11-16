@@ -24,29 +24,104 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Hintergrundvideo ---------- */
-  const video = document.querySelector(".hero-video");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const WA = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+  /* ---------- Hero-Reels (mit Pause-Knopf, WCAG 2.2.2) ---------- */
+  const heroVideos = [...document.querySelectorAll(".hv")];
   const vBtn = document.querySelector(".video-toggle");
-  if (video && vBtn) {
-    const setPaused = (paused) => {
-      paused ? video.pause() : video.play().catch(() => {});
-      vBtn.setAttribute("aria-pressed", String(paused));
-      vBtn.setAttribute("aria-label", paused ? "Hintergrundvideo abspielen" : "Hintergrundvideo pausieren");
+  if (heroVideos.length && vBtn) {
+    let userPaused = reduceMotion;
+    const apply = () => {
+      heroVideos.forEach((v) => (userPaused ? v.pause() : v.play().catch(() => {})));
+      vBtn.setAttribute("aria-pressed", String(userPaused));
+      vBtn.setAttribute("aria-label", userPaused ? "Videos abspielen" : "Videos pausieren");
     };
-    // Wer "weniger Bewegung" eingestellt hat, sieht nur das Standbild
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      video.removeAttribute("autoplay"); setPaused(true);
-    } else {
-      video.play().catch(() => setPaused(true));
-    }
-    vBtn.addEventListener("click", () => setPaused(!video.paused));
-    // Video pausieren, wenn es nicht sichtbar ist (spart Akku)
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => {
-        if (vBtn.getAttribute("aria-pressed") === "true") return;
-        e.isIntersecting ? video.play().catch(() => {}) : video.pause();
-      }).observe(video);
-    }
+    if (reduceMotion) heroVideos.forEach((v) => v.removeAttribute("autoplay"));
+    apply();
+    vBtn.addEventListener("click", () => { userPaused = !userPaused; apply(); });
+  }
+
+  /* ---------- Reels: erst laden & abspielen, wenn sichtbar ---------- */
+  const lazyVideos = [...document.querySelectorAll(".lazy-video")];
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting) {
+          const s = v.querySelector("source[data-src]");
+          if (s) { s.src = s.dataset.src; s.removeAttribute("data-src"); v.load(); }
+          v.play().catch(() => {});
+        } else v.pause();
+      });
+    }, { threshold: 0.35 });
+    lazyVideos.forEach((v) => vio.observe(v));
+  }
+
+  /* ---------- Menü-Tabs (Pfeiltasten-Navigation) ---------- */
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const selectTab = (tab) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => selectTab(t));
+    t.addEventListener("keydown", (e) => {
+      const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      const n = tabs[(i + d + tabs.length) % tabs.length];
+      selectTab(n); n.focus(); e.preventDefault();
+    });
+  });
+
+  /* ---------- Bestellzettel ---------- */
+  const bar = document.getElementById("order-bar");
+  const order = new Map(); // name -> {qty, price, cat}
+  const euro = (n) => n.toFixed(2).replace(".", ",") + " €";
+  const live = document.getElementById("order-live");
+  const listWrap = document.getElementById("order-list");
+  const summaryBtn = bar && bar.querySelector(".order-summary");
+  const renderOrder = () => {
+    if (!bar) return;
+    let count = 0, total = 0, unpriced = false;
+    const ul = listWrap.querySelector("ul"); ul.innerHTML = "";
+    order.forEach((o, name) => {
+      count += o.qty;
+      if (o.price) total += o.qty * o.price; else unpriced = true;
+      const li = document.createElement("li");
+      li.innerHTML = `<span>${o.qty}× ${name}</span>`;
+      const rm = document.createElement("button");
+      rm.type = "button"; rm.textContent = "−"; rm.setAttribute("aria-label", `Ein ${name} entfernen`);
+      rm.addEventListener("click", () => { o.qty--; if (!o.qty) order.delete(name); renderOrder(); });
+      li.append(rm); ul.append(li);
+    });
+    bar.hidden = count === 0;
+    document.body.classList.toggle("has-order", count > 0);
+    if (!count) { listWrap.hidden = true; summaryBtn.setAttribute("aria-expanded", "false"); }
+    document.getElementById("order-count").textContent = `${count} ${count === 1 ? "Artikel" : "Artikel"}`;
+    document.getElementById("order-total").textContent = total ? `· ${unpriced ? "ab " : ""}${euro(total)}` : "";
+    const lines = [...order].map(([n, o]) => `• ${o.qty}× ${n}${o.cat && !n.includes(o.cat) ? ` (${o.cat})` : ""}${o.price ? ` – ${euro(o.price * o.qty)}` : ""}`);
+    const text = ["Hallo Anu, ich möchte gern bestellen 🤎", "", ...lines, "", total ? `Summe (soweit bekannt): ${euro(total)}` : "", "Wann wäre eine Übergabe in Dortmund möglich?"].filter((l, i, a) => l !== "" || a[i - 1] !== "").join("\n");
+    document.getElementById("order-send").href = WA(text);
+  };
+  document.querySelectorAll("[data-add]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const name = btn.dataset.add;
+      const o = order.get(name) || { qty: 0, price: parseFloat(btn.dataset.price) || 0, cat: btn.dataset.cat };
+      o.qty++; order.set(name, o); renderOrder();
+      btn.classList.add("added"); setTimeout(() => btn.classList.remove("added"), 600);
+      if (live) live.textContent = `${name} hinzugefügt. ${o.qty} Stück auf dem Bestellzettel.`;
+    });
+  });
+  if (summaryBtn) {
+    summaryBtn.addEventListener("click", () => {
+      const open = listWrap.hidden;
+      listWrap.hidden = !open; summaryBtn.setAttribute("aria-expanded", String(open));
+    });
+    bar.querySelector(".order-clear").addEventListener("click", () => { order.clear(); renderOrder(); });
   }
 
   /* ---------- Mobile Navigation ---------- */
@@ -172,7 +247,7 @@
       const text = buildMessage(data);
       const wa = document.createElement("a");
       wa.className = "btn btn--rose";
-      wa.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+      wa.href = WA(text);
       wa.target = "_blank"; wa.rel = "noopener";
       wa.innerHTML = '<svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Per WhatsApp senden';
       const mail = document.createElement("a");

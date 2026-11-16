@@ -11,8 +11,8 @@ datenschutz.html      Datenschutzerklärung (DSGVO)
 assets/css/styles.css Design (Farben & Schriften oben als Variablen in :root)
 assets/js/main.js     Menü, Animationen, Formular
 assets/fonts/         Fraunces, Figtree, Caveat – lokal gehostet (DSGVO-konform, OFL-Lizenz)
-assets/img/           Illustrationen + Sorten-Bilder (Platzhalter für deine Fotos)
-assets/video/         Hintergrundvideo (Creme-Loop) – quer + hochkant fürs Handy
+assets/img/menu/      Menü-Grafiken & Fotos von Instagram
+assets/reels/         Reels von Instagram (MP4, ohne Ton) + Standbilder
 ```
 
 ## Vor dem Livegang – Checkliste
@@ -21,9 +21,8 @@ assets/video/         Hintergrundvideo (Creme-Loop) – quer + hochkant fürs Ha
 2. **E-Mail** in `assets/js/main.js` (`CONTACT_EMAIL`) eintragen.
 3. **Eigene Fotos**: Bilder (JPG/WebP, ca. 1600 px breit) nach `assets/img/` legen und im `src` der `<img>`-Tags
    austauschen. Hero: Hochformat 4:5. Über mich: am besten ein Foto von dir.
-4. **Eigenes Video**: Dreh einen kurzen Clip (8–15 Sek., ohne Ton, z. B. Pistaziencreme wird aufgespritzt) quer und hochkant,
-   exportiere als MP4 (H.264, max. ca. 5 MB) und ersetze `assets/video/hero-cream.mp4`, `hero-cream-mobile.mp4`
-   (die `.webm`-Zeile in `index.html` dann löschen) sowie die beiden Poster-JPGs (erstes Standbild).
+4. **Neue Reels**: MP4 nach `assets/reels/` legen (ohne Ton, ca. 540×960, max. ~1 MB) und in `index.html` im Abschnitt „Reels“ eine Karte kopieren.
+   Neue Sorten/Preise stehen direkt in `index.html` im Abschnitt „Menü“.
 5. **Formular**: Ohne Einstellung wird die Anfrage nach dem Absenden fertig formuliert und per WhatsApp oder E-Mail an dich
    übergeben. Für direkten Versand: z. B. bei Formspree ein Formular anlegen und die URL in `FORM_ENDPOINT` in
    `main.js` eintragen (dann Abschnitt 5 der Datenschutzerklärung entsprechend anpassen).
