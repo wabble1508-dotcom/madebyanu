@@ -59,10 +59,13 @@
 
 <main id="main">
 
-  <!-- ============ Hero ============ -->
+  <!-- ============ Hero mit Hintergrundvideo ============ -->
   <section class="hero" id="start" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
+    <div class="hero-frame">
+      <!-- Echtes Reel von @madebyanu.de: Dubai Schokolade -->
+      <video class="hero-bg hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/dubai-schokolade-hd.jpg" aria-hidden="true"><source src="assets/reels/dubai-schokolade-hd.mp4" type="video/mp4"></video>
+
+      <div class="hero-content">
         <p class="pill reveal"><svg aria-hidden="true" style="width:14px;height:14px"><use href="#i-pin"/></svg> Handgemacht in Dortmund</p>
         <h1 id="hero-title" class="reveal" data-delay="1">Creamy. Dreamy. <em>Irresistible.</em></h1>
         <p class="hero-lead reveal" data-delay="2">
@@ -70,8 +73,8 @@
           dass du nicht teilen willst. Sorten antippen, per WhatsApp schicken, genießen.
         </p>
         <div class="hero-cta reveal" data-delay="3">
-          <a class="btn" href="#menue">Menü ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost" href="https://wa.me/4917661478638?text=Hallo%20Anu%2C%20ich%20m%C3%B6chte%20gern%20bestellen%20%F0%9F%A4%8E" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Per WhatsApp bestellen</a>
+          <a class="btn btn--light-on-dark" href="#menue">Menü ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--glass" href="https://wa.me/4917661478638?text=Hallo%20Anu%2C%20ich%20m%C3%B6chte%20gern%20bestellen%20%F0%9F%A4%8E" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Per WhatsApp bestellen</a>
         </div>
         <ul class="hero-facts reveal" data-delay="3">
           <li><strong>9</strong> Cheesecake-Sorten</li>
@@ -80,12 +83,17 @@
         </ul>
       </div>
 
-      <div class="hero-reels reveal" data-delay="2" aria-hidden="true">
-        <!-- Echte Reels von @madebyanu.de -->
-        <div class="hero-reel r1"><video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/tiramisu.jpg"><source src="assets/reels/tiramisu.mp4" type="video/mp4"></video><span>Classic Tiramisu</span></div>
-        <div class="hero-reel r2"><video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/dubai-schokolade.jpg"><source src="assets/reels/dubai-schokolade.mp4" type="video/mp4"></video><span>Dubai Schokolade</span></div>
-        <div class="hero-reel r3"><video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/bueno-bomb.jpg"><source src="assets/reels/bueno-bomb.mp4" type="video/mp4"></video><span>Bueno Bomb</span></div>
+      <div class="hero-side reveal" data-delay="2">
+        <div class="hero-reel-card" aria-hidden="true">
+          <video class="hv" autoplay muted loop playsinline preload="auto" poster="assets/reels/dubai-schokolade-hd.jpg"><source src="assets/reels/dubai-schokolade-hd.mp4" type="video/mp4"></video>
+          <span class="tag">Classic Dubai Schokolade</span>
+        </div>
+        <a class="hero-card" href="#boxen">
+          <img src="assets/img/menu/boxen.jpg" alt="" width="58" height="58">
+          <span><small><span class="live" aria-hidden="true"></span>Beliebt zum Verschenken</small><strong>4er Box nach Wahl – nur 20&nbsp;€</strong></span>
+        </a>
       </div>
+
       <button class="video-toggle" type="button" aria-pressed="false" aria-label="Videos pausieren">
         <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
       </button>
