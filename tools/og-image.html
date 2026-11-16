@@ -12,31 +12,32 @@
   @font-face { font-family: "Pinyon Script"; src: url("../assets/fonts/pinyon-script.woff2") format("woff2"); }
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1200px; height: 630px; overflow: hidden; }
-  body { background: #f5ece7; color: #2e221d; font-family: "Figtree", sans-serif; position: relative; }
+  body { background: #f8e1e5; color: #2e221d; font-family: "Figtree", sans-serif; position: relative; }
   /* zarter Papier-Verlauf */
-  body::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 80% at 20% 30%, #fbf5f1, transparent 70%), radial-gradient(50% 60% at 100% 100%, #ead9cf, transparent 70%); }
-  .frame { position: absolute; inset: 22px; border: 1px solid rgba(169,131,74,.55); }
+  body::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 80% at 22% 40%, #fff, transparent 72%), radial-gradient(50% 60% at 100% 100%, #f1c2cc, transparent 70%); }
+  .frame { position: absolute; inset: 22px; border: 1.5px solid rgba(192,145,70,.7); }
   .text { position: absolute; left: 70px; top: 0; bottom: 0; width: 520px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
   .logo { display: flex; align-items: center; font-family: "Bodoni Moda", serif; font-size: 44px; font-weight: 500; }
   .logo svg { width: 54px; height: 54px; color: #a9834a; margin-left: 4px; transform: translateY(-8px); }
-  .kicker { margin-top: 26px; font-size: 14px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: #86642c; }
-  h1 { margin-top: 18px; font-family: "Bodoni Moda", serif; font-weight: 500; font-size: 46px; line-height: 1.12; letter-spacing: .05em; text-transform: uppercase; }
-  h1 i { text-transform: none; color: #86642c; font-weight: 400; }
+  .kicker { margin-top: 26px; font-size: 14px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: #b23a5a; }
+  h1 { margin-top: 18px; font-family: "Bodoni Moda", serif; font-weight: 600; font-size: 46px; line-height: 1.12; letter-spacing: .05em; text-transform: uppercase; }
+  h1 i { text-transform: none; color: #b23a5a; font-weight: 500; }
   .orn { display: flex; align-items: center; gap: 14px; width: 220px; margin: 22px 0 16px; color: #a9834a; }
   .orn::before, .orn::after { content: ""; flex: 1; height: 1px; background: currentColor; }
-  .tag { font-size: 15px; letter-spacing: .34em; text-transform: uppercase; }
-  .cta { margin-top: 30px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: #2e221d; color: #f5ece7; font-size: 14px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+  .tag { font-size: 15px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: #b23a5a; }
+  .cta { margin-top: 30px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: #b23a5a; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
   .cta svg { width: 20px; height: 20px; }
   .photos { position: absolute; right: 62px; top: 58px; bottom: 58px; width: 520px; }
   .ph { position: absolute; overflow: hidden; border: 7px solid #fbf7f3; box-shadow: 0 24px 44px -22px rgba(46,34,29,.55); }
   .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .p1 { left: 0; top: 40px; width: 190px; height: 340px; transform: rotate(-3deg); }
-  .p2 { left: 165px; top: 0; width: 210px; height: 400px; z-index: 2; }
+  .p2 { left: 165px; top: 0; width: 240px; height: 330px; z-index: 2; }
+  .p2 img { object-position: center 100% !important; }
   .p3 { right: 0; top: 70px; width: 175px; height: 320px; transform: rotate(3deg); }
-  .p2 img { object-position: center 70%; }
-  .script { position: absolute; right: 40px; bottom: 6px; font-family: "Pinyon Script", cursive; font-size: 46px; color: #86642c; z-index: 3; }
-  .price { position: absolute; left: 16px; bottom: 22px; z-index: 3; width: 118px; height: 118px; border-radius: 50%; background: #2e221d; color: #f5ece7; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 16px 30px -14px rgba(0,0,0,.6); }
-  .price small { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #d9c093; }
+  .p2 img { object-position: center 88%; }
+  .script { position: absolute; right: 40px; bottom: 6px; font-family: "Pinyon Script", cursive; font-size: 48px; color: #b23a5a; z-index: 3; }
+  .price { position: absolute; left: 16px; bottom: 22px; z-index: 3; width: 118px; height: 118px; border-radius: 50%; background: #b23a5a; color: #f5ece7; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 16px 30px -14px rgba(0,0,0,.6); }
+  .price small { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #fde2e8; }
   .price b { font-family: "Bodoni Moda", serif; font-weight: 500; font-size: 36px; line-height: 1.05; }
 </style>
 </head>

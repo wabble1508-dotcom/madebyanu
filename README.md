@@ -16,7 +16,7 @@ assets/reels/         Reels von Instagram (MP4, ohne Ton) + Standbilder
 ```
 
 ## Vor dem Livegang – Checkliste
-1. **Platzhalter ersetzen**: In `impressum.html` und `datenschutz.html` alle gelb markierten `[ … ]`
+1. **Platzhalter ersetzen**: In `impressum.html`, `datenschutz.html` und `agb.html` (Zahlung, Stornofrist, Lagerung) alle gelb markierten `[ … ]`
    (Name, Anschrift, E-Mail, Hoster, Landesdatenschutzbehörde) ausfüllen und die `<span class="placeholder">` entfernen.
 2. **E-Mail** in `assets/js/main.js` (`CONTACT_EMAIL`) eintragen.
 3. **Eigene Fotos**: Bilder (JPG/WebP, ca. 1600 px breit) nach `assets/img/` legen und im `src` der `<img>`-Tags
